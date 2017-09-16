@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.Date;
 import java.util.*;
 
 /**
@@ -269,12 +267,48 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
+		try{
+			if(date==null)
+				throw new IllegalArgumentException();
+			else{
+				Student[] t=new Student[this.students.length];
+				int len=this.students.length;
+				int index=0,i;
+				for(i=0;i<len;i++){
+					if(this.students[i].getBirthDate().compareTo(date)<=0)
+						t[index++]=this.students[i];
+				}
+				Student[] ret=Arrays.copyOf(t, index+1);
+				return ret;
+			}
+		}
+		catch(IllegalArgumentException iae){
+			
+		}
 		// Add your implementation here
 		return null;
 	}
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
+		try{
+			if(firstDate==null || lastDate==null)
+				throw new IllegalArgumentException();
+			else{
+				Student[] t=new Student[this.students.length];
+				int len=this.students.length;
+				int index=0,i;
+				for(i=0;i<len;i++){
+					if(this.students[i].getBirthDate().compareTo(firstDate)>=0 && this.students[i].getBirthDate().compareTo(lastDate)<=0)
+						t[index++]=this.students[i];
+				}
+				Student[] ret=Arrays.copyOf(t, index+1);
+				return ret;
+			}
+		}
+		catch(IllegalArgumentException iae){
+			
+		}
 		// Add your implementation here
 		return null;
 	}
