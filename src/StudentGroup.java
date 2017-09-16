@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Date;
+import java.lang.*;
 
 /**
  * A fix-sized array of students
